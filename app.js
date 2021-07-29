@@ -1,6 +1,12 @@
 const colorsDivs = document.querySelectorAll(".color");
 const hexText = document.querySelectorAll(".color .control h2");
 const generateBtn = document.querySelector(".generate");
+const allSliders = document.querySelectorAll(".sliders");
+
+allSliders.forEach((slider) => {
+    slider.addEventListener("input", hslcontrol);
+});
+
 
 function hexCode() {
     // let hex="0123456789ABCDEF";
@@ -20,7 +26,7 @@ generateBtn.addEventListener("click", function () {
         checkText(hexCode(), hext);
 
         const sliders = color.querySelectorAll(".sliders input");
-        console.log(sliders);
+
         const hue = sliders[0];
         const brightness = sliders[1];
         const saturation = sliders[2];
@@ -51,4 +57,25 @@ function checkText(color, text) {
     } else {
         text.style.color = "white";
     }
+}
+
+function hslcontrol(e) {
+    const index = e.target.getAttribute("data-sat") || e.target.getAttribute("data-bright") || e.target.getAttribute("data-hue");
+    const bgColor=colorsDivs[index].querySelector("h2").innerText;
+    const bgtext=colorsDivs[index].children[0].children[0];
+    const slider=e.target.parentElement.querySelectorAll("input[type=range]");
+    const hue=slider[0];
+    const brightness=slider[1];
+    const saturation=slider[2];
+
+    const newcolor=chroma(bgColor)
+    .set("hsl.s",saturation.value)
+    .set("hsl.l",brightness.value)
+    .set("hsl.h",hue.value);
+    colorsDivs[index].style.background=newcolor;
+
+
+
+
+
 }
