@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: auto;
+} 
+i{
+    pointer-events: none;
+}
+.colors{
+    display: flex;
+    height: 84vh;
+    flex-direction: row;
+    overflow: hidden;
+} 
+.color{
+    height: 84vh;
+    position: relative;
+    flex: 1;
+    overflow: hidden !important;
+}
+.controls{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5rem 0rem;
+    position: relative;
+    overflow: hidden !important;
+}
+.controls button{
+    margin: 4rem 0rem;
+    border:none;
+    color: black;
+    font-size: 20px;
+    background: none;
+    cursor: pointer;
+}
+.controls h2{
+    cursor: pointer;
+
+}
+.lock
+{
+    margin-top: 1rem !important;
+}
+.sliders{
+    background-color:rgb(255, 255, 255);
+    height: 14rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem 2rem 0rem 0rem;
+    bottom:0%;
+    transform: translateY(0%);
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    margin-left: 2.4rem ;
+}
+.sliders *{
+    padding: 0.4rem;
+}
+.sliders input{
+    -webkit-appearance: none;
+    margin: 0.2rem;
+    padding: 0.1rem;
+    border-radius: 0.8rem;
+}
+.sliders button{
+    position: absolute;
+    padding: 0.2;
+    padding-right: 1;
+    border: none;
+    top: 3%;
+    right: 1.2%;
+    border-top-right-radius: 2rem;
+    border-bottom-left-radius: 1.5rem;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    background: rgb(163, 152, 152);
+    color: white;
+}
+.panel{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgb(243, 244, 248);
+    padding: 1rem;
+}
+.library-panel,.generate-panel,.save-panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.panel button{
+    background-color: rgb(61, 83, 134);
+    color: white;
+    font-size: 22px;
+    padding: 0.8rem;
+    border:none;
+    cursor: pointer;
+    border-radius: 0.4rem;
+}
+
