@@ -5,7 +5,7 @@ const allSliders = document.querySelectorAll(".sliders");
 const copyBox = document.querySelector(".copy-container");
 const sliderCancel=document.querySelectorAll(".close-adjustment");
 const adjustmentButtons=document.querySelectorAll(".adjust");
-
+const lockbtns=document.querySelectorAll(".lock");
 
 let initialcolors;
 
@@ -36,6 +36,20 @@ adjustmentButtons.forEach((button,index)=>{
         allSliders[index].classList.toggle("down");
     })
 })
+lockbtns.forEach((lock)=>{
+    lock.addEventListener("click",()=>{
+        lock.parentElement.parentElement.classList.toggle("locked");
+        console.log(lock.parentElement.parentElement);
+        if(lock.parentElement.parentElement.classList.contains("locked"))
+        {
+            lock.innerHTML=`<i class="fas fa-lock"></i>`;
+
+        }
+        else{
+            lock.innerHTML=`<i class="fas fa-lock-open"></i>`;
+        }
+    })
+})
 
 
 function hexCode() {
@@ -54,10 +68,20 @@ function generateColor() {
     colorsDivs.forEach(function (color, index) {
         const random = hexCode();
         const hext = color.children[0].children[0];
+        if(color.classList.contains("locked"))
+        {
+            initialcolors.push(hext.innerText);
+            return;
+
+        }
+        else{
+            initialcolors.push(random);
+        }
+        console.log("working?");
         hext.innerText = random;
         color.style.background = random;
         checkText(random, hext);
-        initialcolors.push(hext.innerText);
+
         const sliders = color.querySelectorAll(".sliders input");
 
         const hue = sliders[0];

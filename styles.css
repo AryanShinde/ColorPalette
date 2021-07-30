@@ -42,9 +42,10 @@ i{
     cursor: pointer;
 
 }
-.lock
+.fa-lock-open
 {
-    margin-top: 1rem !important;
+
+    cursor: pointer !important;
 }
 .sliders{
     background-color:rgb(255, 255, 255);
