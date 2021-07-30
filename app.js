@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", generateColor);
 
 generateBtn.addEventListener("click", function () {
     generateColor();
+    setTimeout(()=>{
+        generateColor();
+    },200)
+    setTimeout(()=>{
+        generateColor();
+    },400)
+    
 });
 hexText.forEach((hex) => {
     hex.addEventListener("click", () => {
