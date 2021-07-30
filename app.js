@@ -70,6 +70,12 @@ function generateColor() {
     });
 
     updateInput();
+    colorsDivs.forEach((div,index)=>{
+        const buttons=div.querySelectorAll(".controls button");
+        buttons.forEach((button)=>{
+            checkText(initialcolors[index],button);
+        })
+    })
 }
 
 function colorizesliders(color, hue, brightness, saturation) {
