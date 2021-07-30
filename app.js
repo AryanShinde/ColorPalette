@@ -3,6 +3,9 @@ const hexText = document.querySelectorAll(".controls h2");
 const generateBtn = document.querySelector(".generate");
 const allSliders = document.querySelectorAll(".sliders");
 const copyBox = document.querySelector(".copy-container");
+const sliderCancel=document.querySelectorAll(".close-adjustment");
+const adjustmentButtons=document.querySelectorAll(".adjust");
+
 
 let initialcolors;
 
@@ -23,7 +26,16 @@ hexText.forEach((hex) => {
     });
 
 });
-
+sliderCancel.forEach((slider,index)=>{
+    slider.addEventListener("click",()=>{
+        allSliders[index].classList.remove("down");
+    })
+})
+adjustmentButtons.forEach((button,index)=>{
+    button.addEventListener("click",()=>{
+        allSliders[index].classList.toggle("down");
+    })
+})
 
 
 function hexCode() {
@@ -150,6 +162,4 @@ function copyToClipboard(hex) {
         copyBox.classList.remove("active");
         copyBox.children[0].classList.remove("active");
     })
-
-
 }
