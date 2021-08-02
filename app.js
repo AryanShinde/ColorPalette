@@ -200,3 +200,28 @@ function copyToClipboard(hex) {
         copyBox.children[0].classList.remove("active");
     })
 }
+
+//Saving the palette and LOCAL STORAGE STUFFS
+const saveBtn=document.querySelector(".save");
+const submitSave=document.querySelector(".submit-save");
+const saveContainer=document.querySelector(".save-container");
+const savePopup=document.querySelector(".save-popup");
+const saveClose=document.querySelector(".save-popup button");
+const saveInput=document.querySelector(".save-popup input");
+
+saveBtn.addEventListener("click",openSave);
+saveClose.addEventListener("click",closeSave);
+
+function openSave()
+{
+    saveContainer.classList.add("active");
+    savePopup.classList.add("active");
+
+}
+function closeSave()
+{
+    saveContainer.classList.remove("active");
+    savePopup.classList.remove("active");
+}
+
+
