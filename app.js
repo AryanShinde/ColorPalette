@@ -222,8 +222,11 @@ function openLibrary() {
 }
 
 function closeLibrary() {
-    libraryContainer.classList.remove('active');
     libraryPopup.classList.remove("active");
+    setTimeout(()=>{
+    libraryContainer.classList.remove('active');
+    },500)
+
 }
 
 function openSave() {
@@ -237,7 +240,9 @@ function openSave() {
 function closeSave() {
 
     savePopup.classList.remove("active");
-    saveContainer.classList.remove("active");
+    setTimeout(()=>{
+        saveContainer.classList.remove("active");
+    },500)
 
 }
 
