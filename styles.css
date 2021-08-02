@@ -163,6 +163,7 @@ i {
     margin: 1rem;
     transform: translateY(-2rem);
     transition: all 0.5s ease;
+    opacity: 0;
 }
 
 .copy-popup h4 {
@@ -181,6 +182,7 @@ i {
 .save-popup.active,
 .library-popup.active {
     transform: translateY(0rem);
+    opacity: 1;
 }
 
 .save-container button {
@@ -226,13 +228,18 @@ i {
     border-top-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
+.library-popup h4{
+    padding-top: 4rem;
+}
 
 .library-popup{
-    padding: 1.5rem 0rem;
+    padding: 2rem 0rem;
+    box-sizing: content-box;
     justify-content:flex-start ;
-    overflow-y: scroll;
-    height: 40%;
-    max-height: 40%;
+    overflow:auto;
+    height: 70%;
+    width: 30%;
+    max-height: 70%;
     max-width: 40%;
     display: flex;
     flex-direction: column;
@@ -247,7 +254,8 @@ i {
     flex: 1;
 }
 .palette{
-    width:2rem;
+    margin-left: 3rem;
+    min-width:14rem;
     display: flex;
     flex: 1;
 }
@@ -261,4 +269,10 @@ i {
 .palette-container .name{
     margin-right: 0.2rem;
 }
-
+.select-btn{
+    width:44px;
+    height:48px;
+    background: rgb(76, 110, 185);
+    border: none;
+    color:white;
+}

@@ -49,7 +49,7 @@ adjustmentButtons.forEach((button, index) => {
 lockbtns.forEach((lock) => {
     lock.addEventListener("click", () => {
         lock.parentElement.parentElement.classList.toggle("locked");
-        console.log(lock.parentElement.parentElement);
+
         if (lock.parentElement.parentElement.classList.contains("locked")) {
             lock.innerHTML = `<i class="fas fa-lock"></i>`;
 
@@ -83,7 +83,6 @@ function generateColor() {
         } else {
             initialcolors.push(random);
         }
-        console.log("working?");
         hext.innerText = random;
         color.style.background = random;
         checkText(random, hext);
@@ -231,12 +230,15 @@ function openSave() {
     saveContainer.classList.add("active");
     savePopup.classList.add("active");
 
+
+
 }
 
 function closeSave() {
-    saveContainer.classList.remove("active");
-    savePopup.classList.add("fade");
+
     savePopup.classList.remove("active");
+    saveContainer.classList.remove("active");
+
 }
 
 //ADDING TO LOCAL STORAGE
@@ -244,21 +246,25 @@ function closeSave() {
 submitSave.addEventListener("click", savePalettes);
 
 function savePalettes() {
-    const value = saveInput.value;
-    const colors = [];
-    hexText.forEach((hex) => {
-        colors.push(hex.innerText);
-    });
-    const number = localPalettes.length;
-    const paletteObject = {
-        name: value,
-        color: colors,
-        number: number
-    };
-    saveToLocals(paletteObject);
-    saveInput.value = "";
-    createLibrary(paletteObject);
-
+    if (saveInput.value != "") {
+        const value = saveInput.value;
+        const colors = [];
+        hexText.forEach((hex) => {
+            colors.push(hex.innerText);
+        });
+        const number = localPalettes.length;
+        const paletteObject = {
+            name: value,
+            color: colors,
+            number: number
+        };
+        saveToLocals(paletteObject);
+        saveInput.value = "";
+        createLibrary(paletteObject);
+    } else {
+        saveInput.placeholder = "please enter a name";
+    }
+    closeSave();
 }
 
 function saveToLocals(paletteObject) {
