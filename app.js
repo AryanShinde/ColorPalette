@@ -7,6 +7,9 @@ const sliderCancel=document.querySelectorAll(".close-adjustment");
 const adjustmentButtons=document.querySelectorAll(".adjust");
 const lockbtns=document.querySelectorAll(".lock");
 
+//localstorage variable:
+let localPalettes=[];
+
 let initialcolors;
 
 allSliders.forEach((slider, index) => {
@@ -221,7 +224,37 @@ function openSave()
 function closeSave()
 {
     saveContainer.classList.remove("active");
+    savePopup.classList.add("fade");
     savePopup.classList.remove("active");
 }
 
+//ADDING TO LOCAL STORAGE
 
+submitSave.addEventListener("click",savePalettes);
+
+function savePalettes()
+{
+    const value=saveInput.value;
+    const colors=[];
+    hexText.forEach((hex)=>{
+        colors.push(hex.innerText);
+    });
+    const number=localPalettes.length;
+    const paletteObject={name:value,color:colors,number:number};
+    saveToLocals(paletteObject);
+    saveInput.value="";
+
+}
+
+function saveToLocals(paletteObject)
+{
+    if(localStorage.getItem("palettes")==null)
+    {
+        localPalettes=[];
+    }
+    else{
+        localPalettes=JSON.parse(localStorage.getItem("palettes"));
+    }
+    localPalettes.push(paletteObject);
+    localStorage.setItem("palettes",JSON.stringify(localPalettes));
+}
