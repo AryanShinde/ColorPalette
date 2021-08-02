@@ -300,6 +300,19 @@ function createLibrary(paletteObject) {
     selectBtn.classList.add("select-btn");
     selectBtn.classList.add(paletteObject.number);
     selectBtn.innerText = "Select";
+
+    selectBtn.addEventListener("click",e=>{
+        const selectIndex=e.target.classList[1];
+        initialcolors=[];
+        console.log(localPalettes);
+        localPalettes[selectIndex].color.forEach((color,index)=>{
+            initialcolors.push(color);
+            colorsDivs[index].style.background=color;
+            colorsDivs[index].children[0].children[0].innerText=color;
+        })
+
+    })
+
     newPalette.appendChild(name);
     newPalette.appendChild(palette);
     newPalette.appendChild(selectBtn)
