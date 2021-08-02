@@ -3,12 +3,12 @@ const hexText = document.querySelectorAll(".controls h2");
 const generateBtn = document.querySelector(".generate");
 const allSliders = document.querySelectorAll(".sliders");
 const copyBox = document.querySelector(".copy-container");
-const sliderCancel=document.querySelectorAll(".close-adjustment");
-const adjustmentButtons=document.querySelectorAll(".adjust");
-const lockbtns=document.querySelectorAll(".lock");
+const sliderCancel = document.querySelectorAll(".close-adjustment");
+const adjustmentButtons = document.querySelectorAll(".adjust");
+const lockbtns = document.querySelectorAll(".lock");
 
 //localstorage variable:
-let localPalettes=[];
+let localPalettes = [];
 
 let initialcolors;
 
@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", generateColor);
 
 generateBtn.addEventListener("click", function () {
     generateColor();
-    setTimeout(()=>{
+    setTimeout(() => {
         generateColor();
-    },200)
-    setTimeout(()=>{
+    }, 200)
+    setTimeout(() => {
         generateColor();
-    },400)
-    
+    }, 400)
+
 });
 hexText.forEach((hex) => {
     hex.addEventListener("click", () => {
@@ -36,27 +36,25 @@ hexText.forEach((hex) => {
     });
 
 });
-sliderCancel.forEach((slider,index)=>{
-    slider.addEventListener("click",()=>{
+sliderCancel.forEach((slider, index) => {
+    slider.addEventListener("click", () => {
         allSliders[index].classList.remove("down");
     })
 })
-adjustmentButtons.forEach((button,index)=>{
-    button.addEventListener("click",()=>{
+adjustmentButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
         allSliders[index].classList.toggle("down");
     })
 })
-lockbtns.forEach((lock)=>{
-    lock.addEventListener("click",()=>{
+lockbtns.forEach((lock) => {
+    lock.addEventListener("click", () => {
         lock.parentElement.parentElement.classList.toggle("locked");
         console.log(lock.parentElement.parentElement);
-        if(lock.parentElement.parentElement.classList.contains("locked"))
-        {
-            lock.innerHTML=`<i class="fas fa-lock"></i>`;
+        if (lock.parentElement.parentElement.classList.contains("locked")) {
+            lock.innerHTML = `<i class="fas fa-lock"></i>`;
 
-        }
-        else{
-            lock.innerHTML=`<i class="fas fa-lock-open"></i>`;
+        } else {
+            lock.innerHTML = `<i class="fas fa-lock-open"></i>`;
         }
     })
 })
@@ -78,13 +76,11 @@ function generateColor() {
     colorsDivs.forEach(function (color, index) {
         const random = hexCode();
         const hext = color.children[0].children[0];
-        if(color.classList.contains("locked"))
-        {
+        if (color.classList.contains("locked")) {
             initialcolors.push(hext.innerText);
             return;
 
-        }
-        else{
+        } else {
             initialcolors.push(random);
         }
         console.log("working?");
@@ -104,10 +100,10 @@ function generateColor() {
     });
 
     updateInput();
-    colorsDivs.forEach((div,index)=>{
-        const buttons=div.querySelectorAll(".controls button");
-        buttons.forEach((button)=>{
-            checkText(initialcolors[index],button);
+    colorsDivs.forEach((div, index) => {
+        const buttons = div.querySelectorAll(".controls button");
+        buttons.forEach((button) => {
+            checkText(initialcolors[index], button);
         })
     })
 }
@@ -198,31 +194,46 @@ function copyToClipboard(hex) {
     copyBox.classList.add("active");
     copyBox.children[0].classList.add("active");
 
-    copyBox.addEventListener("click",()=>{
+    copyBox.addEventListener("click", () => {
         copyBox.classList.remove("active");
         copyBox.children[0].classList.remove("active");
     })
 }
 
 //Saving the palette and LOCAL STORAGE STUFFS
-const saveBtn=document.querySelector(".save");
-const submitSave=document.querySelector(".submit-save");
-const saveContainer=document.querySelector(".save-container");
-const savePopup=document.querySelector(".save-popup");
-const saveClose=document.querySelector(".save-popup button");
-const saveInput=document.querySelector(".save-popup input");
+const saveBtn = document.querySelector(".save");
+const submitSave = document.querySelector(".submit-save");
+const saveContainer = document.querySelector(".save-container");
+const savePopup = document.querySelector(".save-popup");
+const saveClose = document.querySelector(".save-popup button");
+const saveInput = document.querySelector(".save-popup input");
+const libraryContainer = document.querySelector(".library-container");
+const libraryPopup = document.querySelector(".library-popup");
+const libraryClose = document.querySelector(".close-library");
+const libraryBtn = document.querySelector(".library");
 
-saveBtn.addEventListener("click",openSave);
-saveClose.addEventListener("click",closeSave);
+saveBtn.addEventListener("click", openSave);
+saveClose.addEventListener("click", closeSave);
+libraryBtn.addEventListener("click", openLibrary);
+libraryClose.addEventListener("click", closeLibrary);
 
-function openSave()
-{
+function openLibrary() {
+    libraryContainer.classList.add('active');
+    libraryPopup.classList.add("active");
+}
+
+function closeLibrary() {
+    libraryContainer.classList.remove('active');
+    libraryPopup.classList.remove("active");
+}
+
+function openSave() {
     saveContainer.classList.add("active");
     savePopup.classList.add("active");
 
 }
-function closeSave()
-{
+
+function closeSave() {
     saveContainer.classList.remove("active");
     savePopup.classList.add("fade");
     savePopup.classList.remove("active");
@@ -230,31 +241,57 @@ function closeSave()
 
 //ADDING TO LOCAL STORAGE
 
-submitSave.addEventListener("click",savePalettes);
+submitSave.addEventListener("click", savePalettes);
 
-function savePalettes()
-{
-    const value=saveInput.value;
-    const colors=[];
-    hexText.forEach((hex)=>{
+function savePalettes() {
+    const value = saveInput.value;
+    const colors = [];
+    hexText.forEach((hex) => {
         colors.push(hex.innerText);
     });
-    const number=localPalettes.length;
-    const paletteObject={name:value,color:colors,number:number};
+    const number = localPalettes.length;
+    const paletteObject = {
+        name: value,
+        color: colors,
+        number: number
+    };
     saveToLocals(paletteObject);
-    saveInput.value="";
+    saveInput.value = "";
+    createLibrary(paletteObject);
 
 }
 
-function saveToLocals(paletteObject)
-{
-    if(localStorage.getItem("palettes")==null)
-    {
-        localPalettes=[];
-    }
-    else{
-        localPalettes=JSON.parse(localStorage.getItem("palettes"));
+function saveToLocals(paletteObject) {
+    if (localStorage.getItem("palettes") == null) {
+        localPalettes = [];
+    } else {
+        localPalettes = JSON.parse(localStorage.getItem("palettes"));
     }
     localPalettes.push(paletteObject);
-    localStorage.setItem("palettes",JSON.stringify(localPalettes));
+    localStorage.setItem("palettes", JSON.stringify(localPalettes));
+}
+
+function createLibrary(paletteObject) {
+    const newPalette = document.createElement("div");
+    newPalette.classList.add("palette-container");
+
+    const name = document.createElement("div");
+    name.classList.add("name");
+    name.innerText = paletteObject.name;
+    const palette = document.createElement("div")
+    palette.classList.add("palette");
+    paletteObject.color.forEach(color => {
+        const colordiv = document.createElement("div");
+        colordiv.style.background = color;
+        palette.appendChild(colordiv);
+    })
+    const selectBtn = document.createElement("button");
+    selectBtn.classList.add("select-btn");
+    selectBtn.classList.add(paletteObject.number);
+    selectBtn.innerText = "Select";
+    newPalette.appendChild(name);
+    newPalette.appendChild(palette);
+    newPalette.appendChild(selectBtn)
+    libraryPopup.appendChild(newPalette);
+
 }
