@@ -223,9 +223,9 @@ function openLibrary() {
 
 function closeLibrary() {
     libraryPopup.classList.remove("active");
-    setTimeout(()=>{
-    libraryContainer.classList.remove('active');
-    },500)
+    setTimeout(() => {
+        libraryContainer.classList.remove('active');
+    }, 500)
 
 }
 
@@ -240,9 +240,9 @@ function openSave() {
 function closeSave() {
 
     savePopup.classList.remove("active");
-    setTimeout(()=>{
+    setTimeout(() => {
         saveContainer.classList.remove("active");
-    },500)
+    }, 500)
 
 }
 
@@ -298,20 +298,27 @@ function createLibrary(paletteObject) {
     })
     const selectBtn = document.createElement("button");
     selectBtn.classList.add("select-btn");
-    selectBtn.classList.add(localPalettes.length-1);
+    console.log(localPalettes.length)
+    if (localPalettes.length >=1) {
+        selectBtn.classList.add(localPalettes.length - 1);
+    } else {
+        selectBtn.classList.add(localPalettes.length);
+    }
     selectBtn.innerText = "Select";
 
-    selectBtn.addEventListener("click",e=>{
-        const selectIndex=e.target.classList[1];
-        initialcolors=[];
+    selectBtn.addEventListener("click", e => {
+        const selectIndex = e.target.classList[1];
+        console.log(selectIndex);
+        initialcolors = [];
         console.log(localPalettes);
-        localPalettes[selectIndex].color.forEach((color,index)=>{
+        localPalettes[selectIndex].color.forEach((color, index) => {
             initialcolors.push(color);
-            colorsDivs[index].style.background=color;
-            colorsDivs[index].children[0].children[0].innerText=color;
+            colorsDivs[index].style.background = color;
+            colorsDivs[index].children[0].children[0].innerText = color;
         })
-
+        updateInput();
     })
+    
 
     newPalette.appendChild(name);
     newPalette.appendChild(palette);
@@ -319,3 +326,16 @@ function createLibrary(paletteObject) {
     libraryPopup.appendChild(newPalette);
 
 }
+
+function local() {
+    let paletteObjectNew;
+    if (localStorage.getItem("palettes") == null) {
+        localPalettes = [];
+    } else {
+        localPalettes = JSON.parse(localStorage.getItem("palettes"));
+        localPalettes.forEach(paletteObject => {
+            createLibrary(paletteObject);
+        });
+    }
+}
+local();
