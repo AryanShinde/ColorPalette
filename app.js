@@ -257,7 +257,18 @@ function savePalettes() {
         hexText.forEach((hex) => {
             colors.push(hex.innerText);
         });
-        const number = localPalettes.length;
+        let number;
+        const paletteObj=JSON.parse(localStorage.getItem("palettes"));
+        if(paletteObj)
+        {
+            number=paletteObj.length;
+        }
+        else{
+            number=localPalettes.length;
+        }
+
+
+        
         const paletteObject = {
             name: value,
             color: colors,
@@ -299,11 +310,8 @@ function createLibrary(paletteObject) {
     const selectBtn = document.createElement("button");
     selectBtn.classList.add("select-btn");
     console.log(localPalettes.length)
-    if (localPalettes.length >=1) {
-        selectBtn.classList.add(localPalettes.length - 1);
-    } else {
-        selectBtn.classList.add(localPalettes.length);
-    }
+    selectBtn.classList.add(paletteObject.number);
+
     selectBtn.innerText = "Select";
 
     selectBtn.addEventListener("click", e => {
