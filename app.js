@@ -298,7 +298,7 @@ function createLibrary(paletteObject) {
     })
     const selectBtn = document.createElement("button");
     selectBtn.classList.add("select-btn");
-    selectBtn.classList.add(paletteObject.number);
+    selectBtn.classList.add(localPalettes.length-1);
     selectBtn.innerText = "Select";
 
     selectBtn.addEventListener("click",e=>{
