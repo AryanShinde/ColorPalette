@@ -176,8 +176,11 @@ function updateInput() {
         }
         if (slider.name === "Saturation") {
             const color = initialcolors[slider.getAttribute("data-sat")];
+            console.log(color);
+
             const satcolor = chroma(color).hsl()[1];
-            slider.value = (satcolor);
+            slider.value = (satcolor*100);
+            console.log(satcolor,slider.value);
 
         }
     })
@@ -258,17 +261,15 @@ function savePalettes() {
             colors.push(hex.innerText);
         });
         let number;
-        const paletteObj=JSON.parse(localStorage.getItem("palettes"));
-        if(paletteObj)
-        {
-            number=paletteObj.length;
-        }
-        else{
-            number=localPalettes.length;
+        const paletteObj = JSON.parse(localStorage.getItem("palettes"));
+        if (paletteObj) {
+            number = paletteObj.length;
+        } else {
+            number = localPalettes.length;
         }
 
 
-        
+
         const paletteObject = {
             name: value,
             color: colors,
@@ -314,10 +315,11 @@ function createLibrary(paletteObject) {
 
     selectBtn.innerText = "Select";
 
+
     selectBtn.addEventListener("click", e => {
+        initialcolors = [];
         const selectIndex = e.target.classList[1];
         console.log(selectIndex);
-        initialcolors = [];
         console.log(localPalettes);
         localPalettes[selectIndex].color.forEach((color, index) => {
             initialcolors.push(color);
@@ -325,8 +327,9 @@ function createLibrary(paletteObject) {
             colorsDivs[index].children[0].children[0].innerText = color;
         })
         updateInput();
+
     })
-    
+
 
     newPalette.appendChild(name);
     newPalette.appendChild(palette);
