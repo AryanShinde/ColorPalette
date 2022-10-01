@@ -310,6 +310,10 @@ function createLibrary(paletteObject) {
     initialcolors = [];
     const selectIndex = e.target.classList[1];
     console.log(selectIndex);
+    console.log(selectIndex);
+    console.log(localPalettes);
+    console.log(selectIndex);
+    console.log(localPalettes);
     console.log(localPalettes);
     localPalettes[selectIndex].color.forEach((color, index) => {
       initialcolors.push(color);
