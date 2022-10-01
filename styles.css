@@ -15,7 +15,7 @@ i {
 
 .colors {
   display: flex;
-  height: 84vh;
+  height: 82vh;
   flex-direction: row;
   overflow: hidden;
   color: aqua;
@@ -23,7 +23,7 @@ i {
 }
 
 .color {
-  height: 84vh;
+  height: 82vh;
   position: relative;
   flex: 1;
   overflow: hidden !important;
@@ -120,10 +120,24 @@ i {
 
 .panel {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  background: rgb(243, 244, 248);
-  padding: 1rem;
+  align-content: center;
+  margin-top: 25px;
+}
+
+.panel > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 60px;
+
+  background: rgb(248, 248, 248);
+  padding: 15px 80px;
+  border-radius: 5px;
 }
 
 .library-panel,
@@ -136,13 +150,35 @@ i {
 }
 
 .panel button {
-  background-color: rgb(61, 83, 134);
-  color: white;
-  font-size: 22px;
-  padding: 0.8rem;
   border: none;
   cursor: pointer;
   border-radius: 0.4rem;
+  background: none;
+}
+
+.panel button i {
+  color: rgb(150, 150, 150);
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+.panel button p {
+  margin: 0;
+  color: rgb(50, 50, 50);
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.library-panel:hover i,
+.generate-panel:hover i,
+.save-panel:hover i {
+  transform: rotate(10deg);
+}
+
+.library-panel:active i,
+.generate-panel:active i,
+.save-panel:active i {
+  transform: rotate(10deg) scale(0.9);
 }
 
 .copy-container,
