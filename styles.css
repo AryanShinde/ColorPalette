@@ -287,12 +287,8 @@ i {
     height: 48px;
     background: rgb(76, 110, 185);
     border: none;
-<<<<<<< HEAD
-    color: white;
 }
-=======
-    color:white;
-}
+
 /* Responsive desgin for controls from starts here*/
 
   @media only screen and (max-width: 835px) {
@@ -358,4 +354,3 @@ i {
     }
   } 
    /* Responsive desgin for controls from end here*/
->>>>>>> c34760d066e43fc73c3998003f47d9526638aeb1
