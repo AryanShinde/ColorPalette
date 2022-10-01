@@ -64,6 +64,7 @@ function hexCode() {
   //     code+=hex[Math.floor(Math.random()*16)];
   // }
   console.log("Working now");
+  console.log("Done");
   let code = chroma.random();
   return code;
 }
@@ -180,6 +181,8 @@ function updateInput() {
 
       const satcolor = chroma(color).hsl()[1];
       slider.value = satcolor * 100;
+      console.log(satcolor, slider.value);
+      console.log(satcolor, slider.value);
       console.log(satcolor, slider.value);
     }
   });
@@ -301,6 +304,7 @@ function createLibrary(paletteObject) {
   });
   const selectBtn = document.createElement("button");
   selectBtn.classList.add("select-btn");
+  console.log(localPalettes.length);
   console.log(localPalettes.length);
   selectBtn.classList.add(paletteObject.number);
 
