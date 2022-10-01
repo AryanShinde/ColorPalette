@@ -32,7 +32,7 @@ i {
     justify-content: center;
     align-items: center;
     justify-content: space-evenly;
-    padding: 5rem 0rem;
+    padding: 4rem 0rem;
     position: relative;
     overflow: hidden !important;
 }
@@ -40,10 +40,10 @@ i {
 .controls button {
     margin: 4rem 0rem;
     border: none;
-    color: black;
+    color: blue;
     font-size: 20px;
     background: none;
-    cursor: pointer;
+    cursor: progress;
 }
 
 .controls h2 {
@@ -70,7 +70,7 @@ i {
     transform: translateY(11rem);
     transition: all 0.5s ease-in-out;
     opacity: 0;
-    margin-left: 2.4rem;
+    margin-left: 2.4em;
 }
 
 .sliders.down {
@@ -79,13 +79,13 @@ i {
 }
 
 .sliders * {
-    padding: 0.4rem;
+    padding: 0.46em;
 }
 
 .sliders input {
     -webkit-appearance: none;
     margin: 0.2rem;
-    padding: 0.1rem;
+    padding: 0.1em;
     border-radius: 0.8rem;
 }
 
@@ -94,7 +94,7 @@ i {
     padding: 0.2;
     padding-right: 1;
     border: none;
-    top: 3%;
+    top: 3.5%;
     right: 1.2%;
     border-top-right-radius: 1.4rem;
     border-bottom-left-radius: 1rem;
@@ -217,7 +217,8 @@ i {
     font-size: 17px;
 }
 
-.save-popup button:first-child,.close-library {
+.save-popup button:first-child,
+.close-library {
     position: absolute;
     top: 0%;
     right: 0%;
@@ -230,15 +231,16 @@ i {
     border-top-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
-.library-popup h4{
+
+.library-popup h4 {
     padding-top: 4rem;
 }
 
-.library-popup{
+.library-popup {
     padding: 2rem 0rem;
     box-sizing: content-box;
-    justify-content:flex-start ;
-    overflow:auto;
+    justify-content: flex-start;
+    overflow: auto;
     height: 70%;
     width: 30%;
     max-height: 70%;
@@ -249,33 +251,41 @@ i {
     align-items: center;
 }
 
-.palette div{
-    width:100px;
-    height:48px;
+.palette div {
+    width: 100px;
+    height: 48px;
     display: flex;
     flex: 1;
 }
-.palette{
+
+.palette {
     margin-left: 3rem;
-    max-width:15rem;
+    max-width: 15rem;
     display: flex;
     flex: 1;
 }
-.palette-container{
+
+.palette-container {
     padding: 0.5rem;
     display: flex;
-    justify-content:space-evenly !important;
+    justify-content: space-evenly !important;
     align-items: center;
     width: 100%;
 }
-.palette-container .name{
+
+.palette-container .name {
     margin-right: 0.2rem;
 }
-.select-btn{
-    width:62px;
-    height:48px;
+
+.select-btn {
+    width: 62px;
+    height: 48px;
     background: rgb(76, 110, 185);
     border: none;
+<<<<<<< HEAD
+    color: white;
+}
+=======
     color:white;
 }
 /* Responsive desgin for controls from starts here*/
@@ -343,3 +353,4 @@ i {
     }
   } 
    /* Responsive desgin for controls from end here*/
+>>>>>>> c34760d066e43fc73c3998003f47d9526638aeb1
