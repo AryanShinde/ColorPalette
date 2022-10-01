@@ -14,12 +14,14 @@ i {
     height: 84vh;
     flex-direction: row;
     overflow: hidden;
+    color: aqua;
 }
 
 .color {
     height: 84vh;
     position: relative;
     flex: 1;
+    border-radius: 12rem;
     overflow: hidden !important;
 }
 
