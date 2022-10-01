@@ -32,7 +32,7 @@ i {
     justify-content: center;
     align-items: center;
     justify-content: space-evenly;
-    padding: 5rem 0rem;
+    padding: 4rem 0rem;
     position: relative;
     overflow: hidden !important;
 }
@@ -40,7 +40,7 @@ i {
 .controls button {
     margin: 4rem 0rem;
     border: none;
-    color: black;
+    color: blue;
     font-size: 20px;
     background: none;
     cursor: progress;
