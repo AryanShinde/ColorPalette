@@ -218,6 +218,10 @@ i {
     font-size: 17px;
 }
 
+.close-adjustment{
+    margin-bottom: 2rem;
+}
+
 .save-popup button:first-child,
 .close-library {
     position: absolute;
