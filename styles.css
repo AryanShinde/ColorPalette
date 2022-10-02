@@ -1,221 +1,267 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    height: auto;
-    font-family:"Roboto",sans-serif;
+  box-sizing: border-box;
+  height: auto;
+}
+
+body {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-family: "Open Sans", sans-serif;
 }
 
 i {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .colors {
-    display: flex;
-    height: 84vh;
-    flex-direction: row;
-    overflow: hidden;
-    color: aqua;
+  display: flex;
+  height: 82vh;
+  flex-direction: row;
+  overflow: hidden;
+  color: aqua;
+  margin-top: 25px;
 }
 
 .color {
-    height: 84vh;
-    position: relative;
-    flex: 1;
-    border-radius: 12rem;
-    overflow: hidden !important;
+  height: 82vh;
+  position: relative;
+  flex: 1;
+  overflow: hidden !important;
+  transition: 0.3s;
+}
+
+.color:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.color:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .controls {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 4rem 0rem;
-    position: relative;
-    overflow: hidden !important;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 4rem 0rem;
+  position: relative;
+  overflow: hidden !important;
 }
 
 .controls button {
-    margin: 4rem 0rem;
-    border: none;
-    color: blue;
-    font-size: 20px;
-    background: none;
-    cursor: progress;
+  margin: 4rem 0rem;
+  border: none;
+  color: blue;
+  font-size: 20px;
+  background: none;
+  cursor: progress;
 }
 
 .controls h2 {
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
 .fa-lock-open {
-
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 
 .sliders {
-    background-color: rgb(255, 255, 255);
-    height: 14rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1.4rem 1.4rem 0rem 0rem;
-    bottom: 0%;
-    transform: translateY(11rem);
-    transition: all 0.5s ease-in-out;
-    opacity: 0;
-    margin-left: 2.3em;
+  background-color: rgb(255, 255, 255);
+  height: 14rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.4rem 1.4rem 0rem 0rem;
+  bottom: 0%;
+  transform: translateY(11rem);
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  margin-left: 2.4em;
 }
 
 .sliders.down {
-    transform: translateY(0rem);
-    opacity: 1;
+  transform: translateY(0rem);
+  opacity: 1;
 }
 
 .sliders * {
-    padding: 0.46em;
+  padding: 0.46em;
 }
 
 .sliders input {
-    -webkit-appearance: none;
-    margin: 0.2rem;
-    padding: 0.1em;
-    border-radius: 0.8rem;
+  -webkit-appearance: none;
+  margin: 0.2rem;
+  padding: 0.1em;
+  border-radius: 0.8rem;
 }
 
 .sliders button {
-    position: absolute;
-    padding: 0.2;
-    padding-right: 1;
-    border: none;
-    top: 3.5%;
-    right: 1.2%;
-    border-top-right-radius: 1.4rem;
-    border-bottom-left-radius: 1rem;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-    background: rgb(163, 152, 152);
-    color: white;
+  position: absolute;
+  padding: 0.2;
+  padding-right: 1;
+  border: none;
+  top: 3.5%;
+  right: 1.2%;
+  border-top-right-radius: 1.4rem;
+  border-bottom-left-radius: 1rem;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  background: rgb(163, 152, 152);
+  color: white;
 }
 
 .panel {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: rgb(243, 244, 248);
-    padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 25px;
+}
+
+.panel > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 60px;
+
+  background: rgb(248, 248, 248);
+  padding: 15px 80px;
+  border-radius: 5px;
 }
 
 .library-panel,
 .generate-panel,
 .save-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .panel button {
-    background-color: rgb(61, 83, 134);
-    color: white;
-    font-size: 22px;
-    padding: 0.8rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  background: none;
+}
+
+.panel button i {
+  color: rgb(150, 150, 150);
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+.panel button p {
+  margin: 0;
+  color: rgb(50, 50, 50);
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.library-panel:hover i,
+.generate-panel:hover i,
+.save-panel:hover i {
+  transform: rotate(10deg);
+}
+
+.library-panel:active i,
+.generate-panel:active i,
+.save-panel:active i {
+  transform: rotate(10deg) scale(0.9);
 }
 
 .copy-container,
 .save-container,
 .library-container {
-    position: fixed;
-    background: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
 }
-
 
 .copy-popup,
 .save-popup,
 .library-popup {
-    background: white;
-    width: 25%;
-    height: 25%;
-    padding: 1rem;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-    transform: translateY(-2rem);
-    transition: all 0.5s ease;
-    opacity: 0;
+  background: white;
+  width: 25%;
+  height: 25%;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  transform: translateY(-2rem);
+  transition: all 0.5s ease;
+  opacity: 0;
 }
 
 .copy-popup h4 {
-    margin-top: 2rem;
-    font-size: 28px;
+  margin-top: 2rem;
+  font-size: 28px;
 }
 
 .copy-container.active,
 .save-container.active,
 .library-container.active {
-    opacity: 1;
-    pointer-events: all;
+  opacity: 1;
+  pointer-events: all;
 }
 
 .copy-popup.active,
 .save-popup.active,
 .library-popup.active {
-    transform: translateY(0rem);
-    opacity: 1;
+  transform: translateY(0rem);
+  opacity: 1;
 }
 
 .save-container button {
-    margin: 0.5rem;
+  margin: 0.5rem;
 }
 
 .save-popup {
-    width: 30%;
-    height: 30%;
+  width: 30%;
+  height: 30%;
 }
 
 .save-popup input {
-    margin: 1rem;
-    margin-top: 0rem;
-    padding: 0.4rem;
+  margin: 1rem;
+  margin-top: 0rem;
+  padding: 0.4rem;
 }
 
 .save-popup h4 {
-    padding-bottom: 1rem;
-    font-size: 18px;
-    margin-top: 2rem;
+  padding-bottom: 1rem;
+  font-size: 18px;
+  margin-top: 2rem;
 }
 
 .submit-save {
-    border-radius: 10px;
-    border: none;
-    padding: 0.6rem;
-    background: rgb(83, 84, 160);
-    color: white;
-    font-size: 17px;
+  border-radius: 10px;
+  border: none;
+  padding: 0.6rem;
+  background: rgb(83, 84, 160);
+  color: white;
+  font-size: 17px;
 }
 
 .close-adjustment{
@@ -224,69 +270,70 @@ i {
 
 .save-popup button:first-child,
 .close-library {
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    display: block;
-    font-size: 18px;
-    background: rgb(121, 112, 112);
-    border: none;
-    color: white;
-    padding: 0.4rem;
-    border-top-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  display: block;
+  font-size: 18px;
+  background: rgb(121, 112, 112);
+  border: none;
+  color: white;
+  padding: 0.4rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 .library-popup h4 {
-    padding-top: 4rem;
+  padding-top: 4rem;
 }
 
 .library-popup {
-    padding: 2rem 0rem;
-    box-sizing: content-box;
-    justify-content: flex-start;
-    overflow: auto;
-    height: 70%;
-    width: 30%;
-    max-height: 70%;
-    max-width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  padding: 2rem 0rem;
+  box-sizing: content-box;
+  justify-content: flex-start;
+  overflow: auto;
+  height: 70%;
+  width: 30%;
+  max-height: 70%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .palette div {
-    width: 100px;
-    height: 48px;
-    display: flex;
-    flex: 1;
+  width: 100px;
+  height: 48px;
+  display: flex;
+  flex: 1;
 }
 
 .palette {
-    margin-left: 3rem;
-    max-width: 15rem;
-    display: flex;
-    flex: 1;
+  margin-left: 3rem;
+  max-width: 15rem;
+  display: flex;
+  flex: 1;
 }
 
 .palette-container {
-    padding: 0.5rem;
-    display: flex;
-    justify-content: space-evenly !important;
-    align-items: center;
-    width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-evenly !important;
+  align-items: center;
+  width: 100%;
 }
 
 .palette-container .name {
-    margin-right: 0.2rem;
+  margin-right: 0.2rem;
 }
 
 .select-btn {
-    width: 62px;
-    height: 48px;
-    background: rgb(76, 110, 185);
-    border: none;
+  width: 62px;
+  height: 48px;
+  background: rgb(76, 110, 185);
+  border: none;
+  color: white;
 }
 
 /* Responsive desgin for controls from starts here*/
@@ -354,3 +401,4 @@ i {
     }
   } 
    /* Responsive desgin for controls from end here*/
+
